@@ -61,7 +61,7 @@
           <form>
             <div class="form-group">
               <label for="Email">Email</label>
-              <input type="text" class="form-control" id="cMail" name="cMail" required>
+              <input type="email" class="form-control" id="cMail" name="cMail" required>
             </div>
                             <br> 
             <div class="form-group">

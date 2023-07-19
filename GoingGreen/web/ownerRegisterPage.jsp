@@ -49,11 +49,17 @@
                 background-color: #0056b3;
                 border-color: #0056b3;
             }
-           
+
         </style>
     </head>
     <body>
         <%@include file="component/navBar.jsp" %>
+
+        <br> <br>       <br>
+
+        <br>
+
+        <br>
         <div class="container">
             <div class="col-md-8">
                 <div class="card">
@@ -62,49 +68,66 @@
                     </div>
                     <div class="card-body">
                         <form>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="firstName">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            <fieldset>
+                                <legend><h2>Personal Detail</h2></legend>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name:</label>
+                                        <input type="text" class="form-control" id="fname" name="fname" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastName">Last Name:</label>
+                                        <input type="text" class="form-control" id="lname" name="lname" required>
+                                    </div>
+                                </div>
+                                <div class="form-group  ">
+                                    <label for="phoneNumber">Phone Number:</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="lastName">Last Name:</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
-                            </div>
-                            <div class="form-group  ">
-                                <label for="phoneNumber">Phone Number:</label>
-                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
-                            </div>
-                            <div class="form-group ">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="form-group ">
-                                <label for="companyName">Company Name:</label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" required>
-                            </div>
-                            <div class="form-group ">
-                                <label for="street">Street:</label>
-                                <input type="text" class="form-control" id="street" name="street" required>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City:</label>
-                                    <input type="text" class="form-control" id="city" name="city" required>
+
+                            </fieldset>
+
+                            <br>
+
+                            <fieldset>
+                                <legend><h2>Company Detail</h2></legend>
+                                <div class="form-group ">
+                                    <label for="companyName">Company Name:</label>
+                                    <input type="text" class="form-control" id="companyName" name="companyName" required>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="state">State:</label>
-                                    <input type="text" class="form-control" id="state" name="state" required>
+                                    <label for="street">Street:</label>
+                                    <input type="text" class="form-control" id="street" name="street" required>
                                 </div>
-                                <div class="form-group ">
-                                    <label for="panNumber">Pan Number:</label>
-                                    <input type="text" class="form-control" id="panNumber" name="panNumber" required>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="city">City:</label>
+                                        <input type="text" class="form-control" id="city" name="city" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="state">State:</label>
+                                        <input type="text" class="form-control" id="state" name="state" required>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="panNumber">Pan Number:</label>
+                                        <input type="text" class="form-control" id="pan" name="pan" required>
+                                    </div>
                                 </div>
-                            </div>
+
+                            </fieldset>
                             <div class="form-group ">
+
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" id="pass" name="pass" required>
+                            </div>
+                            <div class="form-group ">
+
+                                <label for="password">Confirm Password:</label>
+                                <input type="password" class="form-control" id="confirmPass" name="confirmPass" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </form>

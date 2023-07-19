@@ -65,46 +65,30 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName">First Name:</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    <input type="text" class="form-control" id="eFname" name="eFname" required>
                                 </div>
                                 <div class="form-group ">
                                     <label for="lastName">Last Name:</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    <input type="text" class="form-control" id="eLname" name="eLname" required>
                                 </div>
                             </div>
                             <div class="form-group  ">
                                 <label for="phoneNumber">Phone Number:</label>
-                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                                <input type="tel" class="form-control" id="ePhoneNumber" name="ePhoneNumber" required>
                             </div>
                             <div class="form-group ">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="eEmail" name="eEmail" required>
                             </div>
-                            <div class="form-group ">
-                                <label for="companyName">Company Name:</label>
-                                <input type="text" class="form-control" id="companyName" name="companyName" required>
-                            </div>
-                            <div class="form-group ">
-                                <label for="street">Street:</label>
-                                <input type="text" class="form-control" id="street" name="street" required>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="city">City:</label>
-                                    <input type="text" class="form-control" id="city" name="city" required>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="state">State:</label>
-                                    <input type="text" class="form-control" id="state" name="state" required>
-                                </div>
-                                <div class="form-group ">
-                                    <label for="panNumber">Pan Number:</label>
-                                    <input type="text" class="form-control" id="panNumber" name="panNumber" required>
-                                </div>
-                            </div>
+                            
                             <div class="form-group ">
                                 <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
+                                <input type="password" class="form-control" id="ePass" name="ePass" required>
+                            </div>
+                            
+                            <div class="form-group ">
+                                <label for="confirmPass">Confirm Password:</label>
+                                <input type="password" class="form-control" id="confirmPass" name="confirmPass" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Register</button>
                         </form>
