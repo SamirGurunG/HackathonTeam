@@ -12,15 +12,15 @@ import java.sql.*;
 import javax.servlet.RequestDispatcher;
 
 @WebServlet(urlPatterns = {"/logProcess"})
-public class customerLoginProcess extends HttpServlet {
+public class adminLoginProcess extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             //Receving data from requested webpage to compare with database information
-            String email = request.getParameter("cEmail");
-            String ePass = request.getParameter("cPass");
+            String email = request.getParameter("eEmail");
+            String ePass = request.getParameter("ePass");
             try {
                 Class.forName("com.jdbc.mysql.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
@@ -29,7 +29,7 @@ public class customerLoginProcess extends HttpServlet {
                 ResultSet rs = stm.executeQuery();
                 int flag = 0; //this flag is to check all the combination of password and email with user information
                 while (rs.next()) {
-                    if (email.equals(rs.getString("cEmail")) && ePass.equals(rs.getString("cPass"))) {
+                    if (email.equals(rs.getString("eEmail")) && ePass.equals(rs.getString("ePass"))) {
                         flag = 1;//valid information
                     } else {
                         flag = 0;//invalid information
