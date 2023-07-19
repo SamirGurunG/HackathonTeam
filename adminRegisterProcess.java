@@ -28,7 +28,7 @@ public class adminRegisterProcess extends HttpServlet {
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
                 String loginVerifySql = "INSERT INTO owner "
                         + "(eFname,eLname,ePhoneNumber,eEmail,ePass) "
-                        + "VALUES(?,?,?,?,?,?,?);";
+                        + "VALUES(?,?,?,?,?);";
                 PreparedStatement stm = con.prepareStatement(loginVerifySql);
                 stm.setString(1, eFname);
                 stm.setString(2, eLname);
