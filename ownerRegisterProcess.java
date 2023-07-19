@@ -1,5 +1,7 @@
-//This code compares the user input with database data to verify the user
-//For processing owners details
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,43 +10,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
-import javax.servlet.RequestDispatcher;
 
-@WebServlet(urlPatterns = {"/logProcess"})
-public class ownerLoginProcess extends HttpServlet {
+/**
+ *
+ * @author aayus
+ */
+@WebServlet(urlPatterns = {"/ownerRegisterProcess"})
+public class ownerRegisterProcess extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            //Receving data from requested webpage to compare with database information
-            String email = request.getParameter("mail");
-            String ePass = request.getParameter("pass");
-            try {
-                Class.forName("com.jdbc.mysql.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
-                String loginVerifySql = "SELECT * FROM owner;";
-                PreparedStatement stm = con.prepareStatement(loginVerifySql);
-                ResultSet rs = stm.executeQuery();
-                int flag = 0; //this flag is to check all the combination of password and email with user information
-                while (rs.next()) {
-                    if (email.equals(rs.getString("email")) && ePass.equals(rs.getString("pass"))) {
-                        flag = 1;
-                    } else {
-                        flag = 0;
-                    }
-                }
-                if (flag == 1) {
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerDashbord.jsp");
-                } else {
-                    request.setAttribute("errorMessage", "Email or Password is Incorrect");
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");
-                    rd.include(request, response);
-                }
-            } catch (ClassNotFoundException | SQLException e) {
-                out.write("Exception caught:" + e.getMessage());
-            }
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ownerRegisterProcess</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ownerRegisterProcess at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
