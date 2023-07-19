@@ -36,16 +36,16 @@ public class customerLoginProcess extends HttpServlet {
                     }
                 }
                 if (flag == 1) {
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerDashbord.jsp");//redirected to main page
+                    RequestDispatcher rd = request.getRequestDispatcher("customerDashbord.jsp");//redirected to main page
                 } else {
                     request.setAttribute("errorMessage", "Email or Password is Incorrect");//included error message
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                    RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
                     rd.include(request, response);//including error message
                 }
                 con.close();
             } catch (ClassNotFoundException | SQLException e) {
                 request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
-                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
                 rd.include(request, response);//including error message
             }
         }

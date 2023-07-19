@@ -46,16 +46,14 @@ public class ownerRegisterProcess extends HttpServlet {
                 stm.setString(9, pan);
                 stm.setString(10, pass);
                 stm.executeUpdate();
-                out.write("done");
-//                request.setAttribute("successMessage", "Register Successfully!!!");//included success message
-//                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
-//                rd.include(request, response);//including success message
+                request.setAttribute("successMessage", "Register Successfully!!!");//included success message
+                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                rd.include(request, response);//including success message
                 con.close();
             } catch (Exception e) {
-                out.write("exception"+e.getMessage());
-//                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
-//                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
-//                rd.include(request, response);//including error message
+                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
+                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                rd.include(request, response);//including error message
             }
         }
     }

@@ -41,12 +41,12 @@ public class customerRegisterProcess extends HttpServlet {
                 stm.setString(7, cPass);
                 stm.executeUpdate();
                 request.setAttribute("successMessage", "Register Successfully!!!");//included success message
-                RequestDispatcher rd = request.getRequestDispatcher("");//redirected back to login page
+                RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
                 rd.include(request, response);//including success message
                 con.close();
             } catch (Exception e) {
                 request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
-                RequestDispatcher rd = request.getRequestDispatcher("");//redirected back to login page
+                RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
                 rd.include(request, response);//including error message
             }
         }
