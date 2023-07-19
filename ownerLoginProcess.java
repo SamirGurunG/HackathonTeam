@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 
 @WebServlet(urlPatterns = {"/logProcess"})
-public class logProcess extends HttpServlet {
+public class ownerLoginProcess extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
