@@ -38,7 +38,7 @@ public class logProcess extends HttpServlet {
                     } else {
                         flag = 0;
                     }
-                    
+                    samir
                 }
             } catch (ClassNotFoundException | SQLException e) {
                 out.write("Exception caught:"+e.getMessage());
