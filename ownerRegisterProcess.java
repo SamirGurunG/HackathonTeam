@@ -26,10 +26,10 @@ public class ownerRegisterProcess extends HttpServlet {
             String city = request.getParameter("city");
             String state = request.getParameter("state");
             String pan = request.getParameter("pan");
-            String pass = request.getParameter("fname");
+            String pass = request.getParameter("pass");
             //Store all the received information to database table owner
             try {
-                Class.forName("com.jdbc.mysql.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
                 String loginVerifySql = "INSERT INTO owner "
                         + "(fname,lname,phoneNumber,email,companyName,street,city,state,pan,pass) "
@@ -46,14 +46,16 @@ public class ownerRegisterProcess extends HttpServlet {
                 stm.setString(9, pan);
                 stm.setString(10, pass);
                 stm.executeUpdate();
-                request.setAttribute("successMessage", "Register Successfully!!!");//included success message
-                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
-                rd.include(request, response);//including success message
+                out.write("done");
+//                request.setAttribute("successMessage", "Register Successfully!!!");//included success message
+//                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+//                rd.include(request, response);//including success message
                 con.close();
             } catch (Exception e) {
-                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
-                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
-                rd.include(request, response);//including error message
+                out.write("exception"+e.getMessage());
+//                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
+//                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+//                rd.include(request, response);//including error message
             }
         }
     }
