@@ -22,26 +22,33 @@ public class adminRegisterProcess extends HttpServlet {
             String ePhoneNumber = request.getParameter("ePhoneNumber");
             String eEmail = request.getParameter("eEmail");
             String ePass = request.getParameter("ePass");
-            //Store all the received information to database table owner
-            try {
-                Class.forName("com.jdbc.mysql.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
-                String loginVerifySql = "INSERT INTO owner "
-                        + "(eFname,eLname,ePhoneNumber,eEmail,ePass) "
-                        + "VALUES(?,?,?,?,?);";
-                PreparedStatement stm = con.prepareStatement(loginVerifySql);
-                stm.setString(1, eFname);
-                stm.setString(2, eLname);
-                stm.setString(3, ePhoneNumber);
-                stm.setString(4, eEmail);
-                stm.setString(5, ePass);
-                stm.executeUpdate();
-                request.setAttribute("successMessage", "Register Successfully!!!");//included success message
-                RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
-                rd.include(request, response);//including success message
-                con.close();
-            } catch (Exception e) {
-                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
+            String confirmEPass = request.getParameter("confirmEPass");
+            if (confirmEPass.equals(ePass)) {
+                //Store all the received information to database table owner
+                try {
+                    Class.forName("com.jdbc.mysql.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
+                    String loginVerifySql = "INSERT INTO owner "
+                            + "(eFname,eLname,ePhoneNumber,eEmail,ePass) "
+                            + "VALUES(?,?,?,?,?);";
+                    PreparedStatement stm = con.prepareStatement(loginVerifySql);
+                    stm.setString(1, eFname);
+                    stm.setString(2, eLname);
+                    stm.setString(3, ePhoneNumber);
+                    stm.setString(4, eEmail);
+                    stm.setString(5, ePass);
+                    stm.executeUpdate();
+                    request.setAttribute("successMessage", "Register Successfully!!!");//included success message
+                    RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
+                    rd.include(request, response);//including success message
+                    con.close();
+                } catch (Exception e) {
+                    request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
+                    RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
+                    rd.include(request, response);//including error message
+                }
+            } else {
+                request.setAttribute("errorMessage", "Password didn't match with each other");//included error message
                 RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
                 rd.include(request, response);//including error message
             }
@@ -53,11 +60,13 @@ public class adminRegisterProcess extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
     @Override
     public String getServletInfo() {
         return "Short description";
