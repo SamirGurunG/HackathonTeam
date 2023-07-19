@@ -1,6 +1,6 @@
-# Going Green
+# 1. Title: Going Green
 
-## Description
+## 2. Description:
 
 "Going Green" aims to build, grow, and promote more greenhouse products while providing essential information, training, and services related to greenhouse farming. Our website, [ggagro.com](https://www.ggagro.com), will serve as a prime information platform, catering to normal viewers, aspiring greenhouse business owners, and existing businesses looking to expand. We also offer timely maintenance services to existing greenhouse businesses.
 
@@ -26,7 +26,7 @@ Greenhouse owners can showcase information about their business, including locat
 8. Partnerships and Collaborations: Revenue from sponsorship deals, grants, or subsidies from agricultural organizations, environmental groups, or governmental agencies.
 9. Data and Market Insights: Income from offering market insights and data analytics services to greenhouse owners or businesses.
 
-## Tech Stack
+## 3. Tech Stack:
 
 - Programming Languages: Java, JavaScript
 - Web Technologies: JSP (Java Server Pages), Servlet
@@ -36,7 +36,7 @@ Greenhouse owners can showcase information about their business, including locat
 
 By utilizing this tech stack, Our project "Going Green" benefits from the power and flexibility of Java for server-side development, JSP and servlets for dynamic content generation, JavaScript for interactivity, and a well-designed frontend using HTML, CSS, and Bootstrap. The Apache NetBeans IDE streamlines development, while Apache Tomcat serves as the web server to deploy the application.
 
-## Features
+## 4. Features:
 
 1. **Greenhouse Business Directory:**
    - Users can access a comprehensive directory of greenhouse businesses in their area.
@@ -62,7 +62,7 @@ By utilizing this tech stack, Our project "Going Green" benefits from the power 
    - The website provides maintenance services for existing greenhouse businesses on a yearly and biannual basis.
    - Greenhouse owners can opt for membership plans to update their advertisements and maintain online presence.
 
-## Originality (Uniqueness)
+## 5. Originality (Uniqueness)
 
 1. **Emphasis on Greenhouse Promotion and Services:**
    - The platform focuses on promoting greenhouse vegetables and services instead of direct product sales.
