@@ -30,20 +30,23 @@ public class ownerLoginProcess extends HttpServlet {
                 int flag = 0; //this flag is to check all the combination of password and email with user information
                 while (rs.next()) {
                     if (email.equals(rs.getString("email")) && ePass.equals(rs.getString("pass"))) {
-                        flag = 1;
+                        flag = 1;//valid information
                     } else {
-                        flag = 0;
+                        flag = 0;//invalid information
                     }
                 }
                 if (flag == 1) {
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerDashbord.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("ownerDashbord.jsp");//redirected to main page
                 } else {
-                    request.setAttribute("errorMessage", "Email or Password is Incorrect");
-                    RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");
-                    rd.include(request, response);
+                    request.setAttribute("errorMessage", "Email or Password is Incorrect");//included error message
+                    RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                    rd.include(request, response);//including error message
                 }
+                con.close();
             } catch (ClassNotFoundException | SQLException e) {
-                out.write("Exception caught:" + e.getMessage());
+                request.setAttribute("errorMessage", "Exception caught:" + e.getMessage());//included error message
+                RequestDispatcher rd = request.getRequestDispatcher("ownerLoginPage.jsp");//redirected back to login page
+                rd.include(request, response);//including error message
             }
         }
     }
