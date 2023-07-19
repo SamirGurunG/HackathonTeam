@@ -25,7 +25,7 @@ public class logProcess extends HttpServlet {
                 String loginVerifySql = "SELECT * FROM owner;";
                 PreparedStatement stm = con.prepareStatement(loginVerifySql);
                 ResultSet rs = stm.executeQuery();
-                int flag = 0;
+                int flag = 0; //this flag is to check all the combination of password and email with user information
                 while (rs.next()) {
                     if (email.equals(rs.getString("email")) && ePass.equals(rs.getString("pass"))) {
                         flag = 1;
