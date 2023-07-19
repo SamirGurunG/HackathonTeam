@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
+//This code compares the user input with database data to verify the user
+//For processing owners details
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,10 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 
-/**
- *
- * @author aayus
- */
 @WebServlet(urlPatterns = {"/logProcess"})
 public class logProcess extends HttpServlet {
 
@@ -23,12 +16,13 @@ public class logProcess extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            //Receving data from requested webpage to compare with database information
             String email = request.getParameter("mail");
             String ePass = request.getParameter("pass");
             try {
                 Class.forName("com.jdbc.mysql.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logDetail", "root", "");
-                String loginVerifySql = "SELECT * FROM farm;";
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
+                String loginVerifySql = "SELECT * FROM owner;";
                 PreparedStatement stm = con.prepareStatement(loginVerifySql);
                 ResultSet rs = stm.executeQuery();
                 int flag = 0;
@@ -38,7 +32,12 @@ public class logProcess extends HttpServlet {
                     } else {
                         flag = 0;
                     }
-                    
+                }
+                if(flag==1){
+                    out.write("Sucess");
+                }
+                else{
+                    out.write("failed");
                 }
             } catch (ClassNotFoundException | SQLException e) {
                 out.write("Exception caught:"+e.getMessage());
