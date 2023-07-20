@@ -45,28 +45,34 @@ public class customerRegisterProcess extends HttpServlet {
             String cPass = request.getParameter("cPass");
             String confirmPass = request.getParameter("confirmPass");
             if (confirmPass.equals(cPass)) {
-                //Store all the received information to database table owner
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
-                    String loginVerifySql = "INSERT INTO customer "
-                            + "(cFname,cLname,cPhoneNumber,cEmail,cCity,cState,cPass) "
-                            + "VALUES(?,?,?,?,?,?,?);";
-                    PreparedStatement stm = con.prepareStatement(loginVerifySql);
-                    stm.setString(1, cFname);
-                    stm.setString(2, cLname);
-                    stm.setString(3, cPhoneNumber);
-                    stm.setString(4, cEmail);
-                    stm.setString(5, cCity);
-                    stm.setString(6, cState);
-                    stm.setString(7, cPass);
-                    stm.executeUpdate();
-                    request.setAttribute("errorMessage", "Register Successfully!!!");//included success message
-                    RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
-                    rd.include(request, response);//including success message
-                    con.close();
-                } catch (Exception e) {
-                    out.write("Exception caught: "+e.getMessage());
+                if (cPhoneNumber.length() == 10) {
+                    //Store all the received information to database table owner
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
+                        String loginVerifySql = "INSERT INTO customer "
+                                + "(cFname,cLname,cPhoneNumber,cEmail,cCity,cState,cPass) "
+                                + "VALUES(?,?,?,?,?,?,?);";
+                        PreparedStatement stm = con.prepareStatement(loginVerifySql);
+                        stm.setString(1, cFname);
+                        stm.setString(2, cLname);
+                        stm.setString(3, cPhoneNumber);
+                        stm.setString(4, cEmail);
+                        stm.setString(5, cCity);
+                        stm.setString(6, cState);
+                        stm.setString(7, cPass);
+                        stm.executeUpdate();
+                        request.setAttribute("errorMessage", "Register Successfully!!!");//included success message
+                        RequestDispatcher rd = request.getRequestDispatcher("customerLoginPage.jsp");//redirected back to login page
+                        rd.include(request, response);//including success message
+                        con.close();
+                    } catch (Exception e) {
+                        out.write("Exception caught: " + e.getMessage());
+                    }
+                } else {
+                    request.setAttribute("errorMessage", "Invalid Phone Number");//included error message
+                    RequestDispatcher rd = request.getRequestDispatcher("ownerRegisterPage.jsp");//redirected back to login page
+                    rd.include(request, response);//including error message
                 }
             } else {
                 request.setAttribute("errorMessage", "Password didn't match with each other");//included error message
