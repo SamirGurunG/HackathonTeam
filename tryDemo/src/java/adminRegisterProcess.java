@@ -43,26 +43,32 @@ public class adminRegisterProcess extends HttpServlet {
             String ePass = request.getParameter("ePass");
             String confirmEPass = request.getParameter("confirmEPass");
             if (confirmEPass.equals(ePass)) {
-                //Store all the received information to database table owner
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
-                    String loginVerifySql = "INSERT INTO admin "
-                            + "(eFname,eLname,ePhoneNumber,eEmail,ePass) "
-                            + "VALUES(?,?,?,?,?);";
-                    PreparedStatement stm = con.prepareStatement(loginVerifySql);
-                    stm.setString(1, eFname);
-                    stm.setString(2, eLname);
-                    stm.setString(3, ePhoneNumber);
-                    stm.setString(4, eEmail);
-                    stm.setString(5, ePass);
-                    stm.executeUpdate();
-                    request.setAttribute("errorMessage", "Register Successfully!!!");//included success message
-                    RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
-                    rd.include(request, response);//including success message
-                    con.close();
-                } catch (Exception e) {
-                    out.write("Exception caught: "+e.getMessage());
+                if (ePhoneNumber.length() == 10) {
+                    //Store all the received information to database table owner
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/logdetails", "root", "");
+                        String loginVerifySql = "INSERT INTO admin "
+                                + "(eFname,eLname,ePhoneNumber,eEmail,ePass) "
+                                + "VALUES(?,?,?,?,?);";
+                        PreparedStatement stm = con.prepareStatement(loginVerifySql);
+                        stm.setString(1, eFname);
+                        stm.setString(2, eLname);
+                        stm.setString(3, ePhoneNumber);
+                        stm.setString(4, eEmail);
+                        stm.setString(5, ePass);
+                        stm.executeUpdate();
+                        request.setAttribute("errorMessage", "Register Successfully!!!");//included success message
+                        RequestDispatcher rd = request.getRequestDispatcher("adminLoginPage.jsp");//redirected back to login page
+                        rd.include(request, response);//including success message
+                        con.close();
+                    } catch (Exception e) {
+                        out.write("Exception caught: " + e.getMessage());
+                    }
+                } else {
+                    request.setAttribute("errorMessage", "Invalid Phone Number");//included error message
+                    RequestDispatcher rd = request.getRequestDispatcher("ownerRegisterPage.jsp");//redirected back to login page
+                    rd.include(request, response);//including error message}
                 }
             } else {
                 request.setAttribute("errorMessage", "Password didn't match with each other");//included error message
